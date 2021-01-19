@@ -1,0 +1,66 @@
+
+<% layout('layouts/boilerplate') %> 
+<div class="row">
+    <div class="col-6 offset-3">
+        <h1 hidden>Find My Curriculum Profile for</h1>
+        <h1 class="text-center"><%= curriculum.name %> </h1>
+        <div class="mb-4 text-center"><img src="https://cdn.pixabay.com/photo/2017/06/10/07/25/book-2389229_960_720.png"  alt="Books" class="img-fluid" style="max-width: 60%; height: auto;"></div>
+        <section>
+            <h2 hidden>General Curriculum Information</h2>
+            <div class="mb-5">
+                <a href="<%= curriculum.link %>" target="_blank"><h3 class="h5">Go To Website</h3></a>
+                <a href="<%= curriculum.cdreview %>"target="_blank"><h3 class="h5">Cathy Duffy Review</h3></a>
+                <h3 class="h5">Recommended Grades</h3>
+                <p><%= curriculum.grades %> </p>
+                <h3 class="h5">Curriculum Type</h3>
+                <p><%= curriculum.cType %> </p>
+                <h3 class="h5">Accredited</h3>
+                <p><%= curriculum.accredited %> </p>
+                <h3 class="h5">Cost</h3>
+                <p class="fw-light">(0-200 = $, 201-400 $$, 401-800 $$$, 800+ $$$$)</p>
+                <p><%= curriculum.cost %></p>
+                <h3 class="h5">Worldview</h3>
+                <p><%= curriculum.worldview %> </p>
+                <h3 class="h5">Disability Friendly</h3>
+                <p><%= curriculum.disabilityFriendly %></p>
+                <h3 class="h5">Learning Style</h3>
+                <p><%= curriculum.lStyle %></p>
+                <h3 class="h5">Recommended Subjects</h3>
+                <p><%= curriculum.recommended %></p>
+                 <% if(currentUser && curriculum.author.equals(currentUser._id)) { %> 
+                <p><a href="/curriculum/<%= curriculum._id %>/edit " class='btn btn-primary'>Edit</a></p>
+                <p><form action="/curriculum/<%= curriculum._id %>?_method=DELETE" method="POST"><button class="btn btn-danger">DELETE</button></form></p>
+                <% }; %> 
+                <a href="/curriculum" class="btn btn-success">All Curriculum</a>
+            </div>
+        </section>
+        <section>
+            <hr>
+            <div class="">
+                <h2>Leave a Review</h2>
+                <form action="/curriculum/<%= curriculum._id %>/reviews" method="POST" class="mb-5 validated-form" novalidate >
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Rating</label>
+                        <input type="range" min="1" max="5" class="form-range" name="review[rating]">
+                    </div>
+                    <div class="mb-3">
+                        <label for="body" class="form-label">Review</label>
+                        <textarea name="review[body]" id="body" cols="30" rows="4" class="form-control" required></textarea>
+                    </div>
+                    <button class="btn btn-success">Submit</button>
+                </form>
+                <% for(let review of curriculum.reviews) { %>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Rating: <%= review.rating %> </h5>
+                            <p class="card-text"><%= review.body %></p>
+                            <form action="/curriculum/<%=curriculum._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+        </section>
+    </div>
+</div>

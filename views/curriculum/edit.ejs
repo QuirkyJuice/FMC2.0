@@ -1,0 +1,322 @@
+
+<% layout('layouts/boilerplate') %> 
+<div class="col-6 offset-3">
+
+<% const grade = curriculum.grades %>
+
+<% console.log(grade) %>
+
+    <h1>Edit Curriculum</h1>
+    <form action="/curriculum/<%= curriculum._id %>?_method=PUT " method="POST" novalidate class="validated-form">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" name="curriculum[name]" class="form-control" value="<%= curriculum.name %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="link" class="form-label">Website URL</label>
+            <input type="text" id="link" name="curriculum[link]" class="form-control" value="<%= curriculum.link %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="link" class="form-label">Cathy Duffy Review Link</label>
+            <input type="text" id="link" name="curriculum[cdreview]" class="form-control" value="<%= curriculum.cdreview %>" required>
+        </div>
+        <div class="mb-2">Which grades are provided? Check all that apply.</div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="prek" id="prek" <% if (grade.includes('prek')) { %>checked <%} %> >
+            <label class="form-check-label" for="prek">
+              PreK
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="k" id="k" <% if (grade.k === true) {%>checked <%} %> >
+            <label class="form-check-label" for="k">
+              K
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="1" id="first" <% if (grade.includes('1')) {%>checked <%} %>>
+            <label class="form-check-label" for="first">
+              1
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="2" id="2" <% if (grade.includes('2')) {%>checked <%} %>>
+            <label class="form-check-label" for="2">
+              2
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="3" id="3" <% if (grade.includes('3')) {%>checked <%} %>>
+            <label class="form-check-label" for="3">
+              3
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="4" id="4" <% if (grade.includes('4')) {%>checked <%} %>>
+            <label class="form-check-label" for="4">
+              4
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="5" id="5" <% if (grade.includes('5')) {%>checked <%} %>>
+            <label class="form-check-label" for="5">
+              5
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="6" id="6" <% if (grade.includes('6')) {%>checked <%} %>>
+            <label class="form-check-label" for="6">
+              6
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="7" id="7" <% if (grade.includes('7')) {%>checked <%} %>>
+            <label class="form-check-label" for="7">
+              7
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="8" id="8" <% if (grade.includes('8')) {%>checked <%} %>>
+            <label class="form-check-label" for="8">
+              8
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="9" id="9" <% if (grade.includes('9')) {%>checked <%} %>>
+            <label class="form-check-label" for="9">
+              9
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="10" id="10" <% if (grade.includes('10')) {%>checked <%} %>>
+            <label class="form-check-label" for="10">
+              10
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="11" id="11" <% if (grade.includes('11')) {%>checked <%} %>>
+            <label class="form-check-label" for="11">
+              11
+            </label>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" name="curriculum[grades]" value="12" id="12" <% if (grade.includes('12')) {%>checked <%} %>>
+            <label class="form-check-label" for="12">
+              12
+            </label>
+          </div>
+          <div class="mb-3">
+              <label for="howManyRec">How many people recommend? (if not provided leave 1 as default)</label>
+              <input type="number" id="howManyRec" name="curriculum[howManyRec]" class="form-control" value="<%= curriculum.howManyRec %>">
+          </div>
+          <div class="mb-2">Has the curriculum been used by an accredited institution?</div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="curriculum[accredited]" value="Yes" id="accreditedY" <% if (curriculum.accredited.includes('Yes')) {%>checked <%} %>>
+            <label class="form-check-label" for="accreditedY">
+              Yes
+            </label>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="curriculum[accredited]" value="No" id="accreditedN" <% if (curriculum.accredited.includes('No')) {%>checked <%} %>>
+            <label class="form-check-label" for="accreditedN">
+              No
+            </label>
+          </div>
+          <div class="mb-2">How much does it cost? (0-200 $, 201-400 $$, 401-800 $$$, 800+ $$$$)</div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="curriculum[cost]" value="$" id="cost1" <% if (curriculum.cost.includes('$')) {%>checked <%} %>>
+            <label class="form-check-label" for="cost1">
+              $
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="curriculum[cost]" value="$$" id="cost2" <% if (curriculum.cost.includes('$$')) {%>checked <%} %>>
+            <label class="form-check-label" for="cost2">
+              $$
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="curriculum[cost]" value="$$$" id="cost3" <% if (curriculum.cost.includes('$$$')) {%>checked <%} %>>
+            <label class="form-check-label" for="cost3">
+              $$$
+            </label>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="curriculum[cost]" value="$$$$" id="cost4" <% if (curriculum.cost.includes('$$$$')) {%>checked <%} %>>
+            <label class="form-check-label" for="cost4">
+              $$$$
+            </label>
+          </div>
+          <div class="mb-2">What is the curriculum's worldview?</div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="curriculum[worldview]" value="Secular" id="secular" <% if (curriculum.worldview.includes('Secular')) {%>checked <%} %>>
+            <label class="form-check-label" for="secular">
+              Secular
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="curriculum[worldview]" value="Mennonite" id="mennonite" <% if (curriculum.worldview.includes('Mennonite')) {%>checked <%} %>>
+            <label class="form-check-label" for="mennonite">
+              Mennonite
+            </label>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="curriculum[worldview]" value="Christian" id="christian" <% if (curriculum.worldview.includes('Christian')) {%>checked <%} %>>
+            <label class="form-check-label" for="christian">
+              Christian
+            </label>
+          </div>
+          <div class="mb-2">Is it disability friendly?</div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="curriculum[disabilityFriendly]" value="Yes" id="disbailityFY" <% if (curriculum.disabilityFriendly.includes('Yes')) {%>checked <%} %>>
+            <label class="form-check-label" for="disbailityFY">
+              Yes
+            </label>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="curriculum[disabilityFriendly]" value="No" id="disabilityFN" <% if (curriculum.disabilityFriendly.includes('No')) {%>checked <%} %>>
+            <label class="form-check-label" for="disabilityFN">
+              No
+            </label>
+          </div>
+          <div class="mb-2">What's the level of teacher involvement?</div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="curriculum[teacherInvolve]" value="High" id="teacherHigh" <% if (curriculum.teacherInvolve.includes('High')) {%>checked <%} %>>
+            <label class="form-check-label" for="teacherHigh">
+              High
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="curriculum[teacherInvolve]" value="Mid" id="teacherMid" <% if (curriculum.teacherInvolve.includes('Mid')) {%>checked <%} %>>
+            <label class="form-check-label" for="teacherMid">
+              Mid
+            </label>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="curriculum[teacherInvolve]" value="Low" id="teacherLow" <% if (curriculum.teacherInvolve.includes('Low')) {%>checked <%} %>>
+            <label class="form-check-label" for="teacherLow">
+              Low
+            </label>
+          </div>
+          <div class="mb-2">What's the curriculum's learning style? Check all that apply.</div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[lStyle]" value="V" id="Visual" <% if (curriculum.lStyle.includes('V')) {%>checked <%} %>>
+            <label class="form-check-label" for="Visual">
+              Visual
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[lStyle]" value="A" id="Auditory" <% if (curriculum.lStyle.includes('A')) {%>checked <%} %>>
+            <label class="form-check-label" for="Auditory">
+              Auditory
+            </label>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" name="curriculum[lStyle]" value="K" id="Kinetic" <% if (curriculum.lStyle.includes('K')) {%>checked <%} %>>
+            <label class="form-check-label" for="Kinetic">
+              Kinetic
+            </label>
+          </div>
+          <div class="mb-2">Is the curriculum an all-in-one? Unit based? Supplementary? Or project based? Check all that apply.</div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[cType]" value="A" id="allCTypes" <% if (curriculum.cType.includes('A')) {%>checked <%} %>>
+            <label class="form-check-label" for="allCTypes">
+              All-In-One
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[cType]" value="U" id="unitBased" <% if (curriculum.cType.includes('U')) {%>checked <%} %>>
+            <label class="form-check-label" for="unitBased">
+              Unit Based
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[cType]" value="P" id="projectBased" <% if (curriculum.cType.includes('P')) {%>checked <%} %>>
+            <label class="form-check-label" for="projectBased">
+              Project Based
+            </label>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" name="curriculum[cType]" value="S" id="supplementary" <% if (curriculum.cType.includes('S')) {%>checked <%} %>>
+            <label class="form-check-label" for="supplementary">
+              Supplementary
+            </label>
+          </div>
+
+          <div class="mb-2">What part of the curriculum is recommended? Check all that apply.</div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[recommended]" value="A" id="allRecc" <% if (curriculum.recommended.includes('A')) {%>checked <%} %>>
+            <label class="form-check-label" for="allRecc">
+              All
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[recommended]" value="LA" id="laRecc"  <% if (curriculum.recommended.includes('LA')) {%>checked <%} %>>
+            <label class="form-check-label" for="laRecc">
+              Language Arts
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[recommended]" value="M" id="mathRecc"  <% if (curriculum.recommended.includes('M')) {%>checked <%} %>>
+            <label class="form-check-label" for="mathRecc">
+              Math
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[recommended]" value="S" id="scienceRecc"  <% if (curriculum.recommended.includes('S')) {%>checked <%} %>>
+            <label class="form-check-label" for="scienceRecc">
+              Science
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[recommended]" value="H" id="hisRecc"  <% if (curriculum.recommended.includes('H')) {%>checked <%} %>>
+            <label class="form-check-label" for="hisRecc">
+              History
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[recommended]" value="P" id="penRecc"  <% if (curriculum.recommended.includes('P')) {%>checked <%} %>>
+            <label class="form-check-label" for="penRecc">
+              Penmanship/Handwriting
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[recommended]" value="G" id="geoRecc"  <% if (curriculum.recommended.includes('G')) {%>checked <%} %>>
+            <label class="form-check-label" for="geoRecc">
+              Geography
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[recommended]" value="Ar" id="artRecc"  <% if (curriculum.recommended.includes('Ar')) {%>checked <%} %>>
+            <label class="form-check-label" for="artRecc">
+              Art
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[recommended]" value="Sp" id="spanRecc"  <% if (curriculum.recommended.includes('Sp')) {%>checked <%} %>>
+            <label class="form-check-label" for="spanRecc">
+              Spanish
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="curriculum[recommended]" value="Fr" id="frenRecc"  <% if (curriculum.recommended.includes('Fr')) {%>checked <%} %>>
+            <label class="form-check-label" for="frenRecc">
+              French
+            </label>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" name="curriculum[recommended]" value="B" id="bibleRecc"  <% if (curriculum.recommended.includes('B')) {%>checked <%} %>>
+            <label class="form-check-label" for="bibleRecc">
+              Bible
+            </label>
+          </div>
+
+          <div class="mb-3">
+            <button class="btn btn-success">Update Curriculum</button>
+            </div>
+    </form>
+    <a href="/curriculum/<%= curriculum._id %> ">Back to Curriculum Profile</a>
+
+  </div>
+
+  

@@ -1,0 +1,12 @@
+
+    <% layout('layouts/boilerplate') %> 
+
+<div class="d-grid col-md-6 mx-auto text-center mt-5">
+    <h1 class="display-3">Find My Curriculum</h1>
+    <p class="">The easy-to-use quiz that helps you find the best curriculum based on your unique needs.</p>
+  </div>
+  <div class="d-grid gap-2 col-md-6 mx-auto my-5">
+    <a href="/quiz" class="btn btn-primary btn-lg">Take the Quiz</a>
+    <% if(!currentUser) { %> <a href="/register" class="btn btn-outline-secondary btn-lg">Register for Full Database</a>
+    <% } else { %> <a href="/logout" class="btn btn-outline-secondary btn-lg">Logout</a> <% }; %> 
+  </div>

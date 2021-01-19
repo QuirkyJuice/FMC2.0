@@ -1,0 +1,18 @@
+
+<% layout('layouts/boilerplate') %> 
+
+<h1>All Curriculum</h1>
+    
+<% for (let curr of curriculum) { %>
+    <div class="card my-3">
+        <div class="card-body">
+          <h5 class="card-title"><%= curr.name %> </h5>
+          <p class="card-text">
+              <div>Cost: <%= curr.cost %> </div>
+              <div>Worldview: <%= curr.worldview %></div>
+        </p>
+          <a href="/curriculum/<%= curr._id %>" class="btn btn-primary">View Curriculum Profile</a>
+        </div>
+      </div>
+
+<% } %> 
